@@ -1,0 +1,14 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Hemming Bird",
+      "author": "Paul Prieto"
+    },
+    {
+      "id": 2,
+      "title": "Jane Doe's Heartbreaks",
+      "author": "John Doe"
+    }
+  ]
+}
