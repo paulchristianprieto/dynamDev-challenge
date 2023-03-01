@@ -25,48 +25,60 @@ function App() {
   }, [deleteBook, addBook]);
 
   return (
-    <div>
-      <Header>
-        My Reading List
-      </Header>
-      {data.map(book => (
-        <Book key={book?.id}>
-          <div
-            className='closeButton'
-            onClick={() => deleteBook(book?.id)}
+    <AppContainer>
+      <Container>
+        <Header>
+          My Reading List
+        </Header>
+        {data.map(book => (
+          <Book key={book?.id}>
+            <div
+              className='closeButton'
+              onClick={() => deleteBook(book?.id)}
+            >
+              X
+            </div>
+            <h2>
+              {book?.title}
+            </h2>
+            <p>
+              {book?.author}
+            </p>
+          </Book>
+        ))}
+
+        <Form>
+          <Input
+            value={formData.title}
+            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            placeholder='Book Title'
+          />
+          <Input
+            value={formData.author}
+            onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+            placeholder='Author'
+          />
+
+          <Button
+            onClick={() => addBook(formData)}
           >
-            X
-          </div>
-          <h2>
-            {book?.title}
-          </h2>
-          <p>
-            {book?.author}
-          </p>
-        </Book>
-      ))}
-
-      <Form>
-        <Input
-          value={formData.title}
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          placeholder='Book Title'
-        />
-        <Input
-          value={formData.author}
-          onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-          placeholder='Author'
-        />
-
-        <Button
-          onClick={() => addBook(formData)}
-        >
-          Create
-        </Button>
-      </Form>
-    </div>
+            Create
+          </Button>
+        </Form>
+      </Container>
+    </AppContainer>
   );
 }
+
+const AppContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const Container = styled.div`
+  width: 100%;
+  max-width: 600px;
+`
 
 const Header = styled.div`
   background-color: #219ebc;
